@@ -21,46 +21,46 @@
     }
 
     function round(playerSelection, computerSelection) {
-      console.log(playerSelection);
-      console.log(computerSelection);
+      //console.log(playerSelection);
+      //console.log(computerSelection);
       playerSelection = playerSelection.toLowerCase();
       switch(playerSelection) {
         case "scissors":
           switch(computerSelection) {
             case "Scissors":
-              return  "It's a Draw! You both chose Scissors!";
+              return  "Draw! You both chose Scissors!";
               break;
             case "Rock":
-              return "You Lose! Rock beats Scissors";
+              return "Lose! Rock beats Scissors";
               break;
             case "Paper":
-              return "You Win! Scissors beat Paper";
+              return "Win! Scissors beat Paper";
               break;
           }
           break;
         case "rock":
           switch(computerSelection) {
             case "Scissors":
-              return "You Win! Rock beats Scissors";
+              return "Win! Rock beats Scissors";
               break;
             case "Rock":
-              return "It's a Draw! You both chose Rock!"
+              return "Draw! You both chose Rock!"
               break;
             case "Paper":
-              return "You Lose! Paper beats Rock";
+              return "Lose! Paper beats Rock";
               break;
           }
           break;
         case "paper":
           switch(computerSelection) {
             case "Scissors":
-              return "You Lose! Scissors beat Rock!";
+              return "Lose! Scissors beat Rock!";
               break;
             case "Rock":
-              return "You Win! Paper beats Rock!";
+              return "Win! Paper beats Rock!";
               break;
             case "Paper":
-              return "It's a Draw! You both chose Paper";
+              return "Draw! You both chose Paper";
               break;
           }
           break;
@@ -68,9 +68,25 @@
     }
 
     function game() {
-      for (var i = 0; i < 5; i++) {
+      let scorePlayer = 0;
+      let scoreComputer = 0;
+      while (scorePlayer < 3 && scoreComputer < 3) {
         playerSelection = prompt("What do you chose rock, paper or scissors?");
-        console.log(round(playerSelection, computerPlay()));
+        var result = round(playerSelection, computerPlay())
+        console.log(result);
+        result = result.split(" ");
+        //console.log(result[0]);
+        switch (result[0]) {
+          case "Win!":
+            scorePlayer++;
+            break;
+          case "Lose!":
+            scoreComputer++;
+            break;
+          case "Draw":
+            break;
+        }
+        console.log("score: "+scorePlayer+"|"+scoreComputer);
       }
     }
 
