@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Oskar's rock paper scissors game</title>
+  </head>
+  <script>
+    function computerPlay() {
+      let choice = Math.floor(Math.random()*3);
+      switch(choice) {
+        case 0:
+          return "Scissors";
+          break;
+        case 1:
+          return "Paper";
+          break;
+        case 2:
+          return "Rock";
+          break;
+      }      
+    }
+
+    function round(playerSelection, computerSelection) {
+      console.log(playerSelection);
+      console.log(computerSelection);
+      playerSelection = playerSelection.toLowerCase();
+      switch(playerSelection) {
+        case "scissors":
+          switch(computerSelection) {
+            case "Scissors":
+              return  "It's a Draw! You both chose Scissors!";
+              break;
+            case "Rock":
+              return "You Lose! Rock beats Scissors";
+              break;
+            case "Paper":
+              return "You Win! Scissors beat Paper";
+              break;
+          }
+          break;
+        case "rock":
+          switch(computerSelection) {
+            case "Scissors":
+              return "You Win! Rock beats Scissors";
+              break;
+            case "Rock":
+              return "It's a Draw! You both chose Rock!"
+              break;
+            case "Paper":
+              return "You Lose! Paper beats Rock";
+              break;
+          }
+          break;
+        case "paper":
+          switch(computerSelection) {
+            case "Scissors":
+              return "You Lose! Scissors beat Rock!";
+              break;
+            case "Rock":
+              return "You Win! Paper beats Rock!";
+              break;
+            case "Paper":
+              return "It's a Draw! You both chose Paper";
+              break;
+          }
+          break;
+      }
+    }
+
+    function game() {
+      for (var i = 0; i < 5; i++) {
+        playerSelection = prompt("What do you chose rock, paper or scissors?");
+        console.log(round(playerSelection, computerPlay()));
+      }
+    }
+
+  </script>
+</html>
